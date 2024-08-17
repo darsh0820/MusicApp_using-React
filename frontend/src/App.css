@@ -1,53 +1,52 @@
-/* src/App.css */
 .App {
   text-align: center;
-  /* font-family: Arial, sans-serif; */
+  width: 90%;
+  margin: auto;
 }
 
-body{
+body {
   background: linear-gradient(135deg, #1DB954, #121212);
   color: #fff;
   display: flex;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
+  margin: 0; /* Ensure no extra margin on body */
 }
 
 .music-player {
-  height: 25rem;
-  margin: 20px auto;
+  height: auto; /* Allow height to adjust based on content */
   max-width: 500px;
-  background: rgba(0, 0, 0, 0.8);
-  width: 20rem;
-  border-radius: 20px;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  width: 90%;
   padding: 1rem;
   text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   overflow: hidden;
+  margin: 20px auto;
 }
 
 .music-player .marquee {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
   overflow: hidden;
   white-space: nowrap;
-  margin-bottom: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
 }
 
 .music-player .marquee h3,
 .music-player .marquee p {
   display: inline-block;
   color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: transform 0.5s ease;
-  overflow: hidden; /* Hide overflow */
-  text-overflow: ellipsis; /* Add ellipsis */
-  white-space: nowrap; /* Prevent wrapping */
 }
 
 .music-player .marquee.scrolling h3,
 .music-player .marquee.scrolling p {
   animation: scroll-left 15s linear infinite;
-  white-space: nowrap;
 }
 
 @keyframes scroll-left {
@@ -60,18 +59,16 @@ body{
 }
 
 .music-player img {
-  width: 14rem;
-  height: 14rem;
-  border-radius: 50%;
+  width: 12rem; /* Adjusted width for responsiveness */
+  height: 12rem; /* Adjusted height for responsiveness */
   margin-bottom: 20px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
-
 }
 
 .rotating {
-  animation: rotate 10s linear infinite;
-  animation: flick 0.5s ease-in infinite alternate;
+  animation: rotate 10s linear infinite, flick 0.5s ease-in infinite alternate;
 }
 
 @keyframes rotate {
@@ -84,12 +81,11 @@ body{
 }
 
 @keyframes flick {
-  from{
-    box-shadow: 0px 0px 18px rgb(255, 255, 255);
+  from {
+    box-shadow: 0 0 18px rgb(255, 255, 255);
   }
   to {
-    box-shadow: 0px 0px 10px rgb(255, 255, 255);
-
+    box-shadow: 0 0 10px rgb(255, 255, 255);
   }
 }
 
@@ -105,18 +101,53 @@ body{
   color: #fff;
 }
 
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+  .music-player {
+    width: 85%; /* Adjust width for smaller screens */
+    padding: 0.5rem; /* Reduce padding */
+  }
 
+  .music-player img {
+    width: 10rem; /* Smaller album cover */
+    height: 10rem; /* Smaller album cover */
+  }
 
-/* Add these styles to App.css */
+  .controls svg {
+    margin: 0 5px; /* Reduce spacing between control icons */
+  }
+}
 
+/* Media Query for Very Small Screens */
+@media (max-width: 480px) {
+  .music-player {
+    width: 95%; /* Use full width */
+    padding: 0.5rem; /* Less padding on very small screens */
+  }
+
+  .music-player img {
+    width: 8rem; /* Further reduce album cover size */
+    height: 8rem; /* Further reduce album cover size */
+  }
+
+  .controls {
+    flex-direction: row; 
+  }
+
+  .controls svg {
+    margin: 0 5px; /* Adjust spacing for vertical alignment */
+  }
+}
+
+/* Search Input and Button Styles */
 .search-input {
-  width: calc(100% - 100px);
+  width: calc(100% - 120px); /* Adjust width for responsiveness */
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 20px;
   font-size: 1rem;
   margin-bottom: 20px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .search-button {
@@ -128,17 +159,18 @@ body{
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .search-button:hover {
   background-color: #00000092;
 }
 
-
+/* Song List Styles */
 .song-list {
   margin: 20px auto;
   max-width: 500px;
+  width: 90%;
 }
 
 .song-list ul {
@@ -168,7 +200,7 @@ body{
   height: 60px;
   border-radius: 10px;
   margin-right: 15px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .song-details {
@@ -176,10 +208,11 @@ body{
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  overflow: hidden; /* Make sure the parent container has overflow hidden */
+  overflow: hidden;
 }
 
-.song-title, .artist-name {
+.song-title,
+.artist-name {
   margin: 0;
   color: #ddd;
   overflow: hidden; /* Hide overflow */
@@ -194,4 +227,3 @@ body{
 .artist-name {
   color: #ccc; /* Slightly different color for artist */
 }
-
