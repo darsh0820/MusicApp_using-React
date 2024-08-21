@@ -9,7 +9,7 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 function App() {
     const [songs, setSongs] = useState([]);
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
-    const [searchTerm, setSearchTerm] = useState('kendrick');
+    const [searchTerm, setSearchTerm] = useState('songs');
 
     const fetchSongs = async (term) => {
         try {
